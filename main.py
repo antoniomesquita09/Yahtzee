@@ -8,9 +8,24 @@ from pilha import *
 #     e=pilha_pop()
 #     print("(%.1f,%.1f)"%(e[0],e[1]))
 
-lst_insIni(1)
-lst_insFin(2)
-lst_insFin(3)
+# tests =======>
+
+# lst_insIni(0)
+# lst_insFin(2)
+# lst_insFin(3)
+# lst_insFin(4)
+
+# exibe()
+
+# lst_retIni()
+# lst_retFin()
+
+# exibe()
+
+# lst_posIni()
+
+lst_prox()
 
 exibe()
+
 # lst_vazia()
