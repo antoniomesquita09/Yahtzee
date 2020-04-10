@@ -1,12 +1,14 @@
 from pilha import *
 
-# pilha_push([3.0,3.0])
-# pilha_push([2.0,2.0])
-# pilha_push([1.0,1.0])
+pilha_push([3.0,3.0])
+pilha_push([2.0,2.0])
+pilha_push([1.0,1.0])
 
-# while not pilha_vazia():
-#     e=pilha_pop()
-#     print("(%.1f,%.1f)"%(e[0],e[1]))
+while not pilha_vazia():
+    e=pilha_pop()
+    print("(%.1f,%.1f)"%(e[0],e[1]))
+
+
 
 # tests =======>
 
@@ -24,8 +26,14 @@ from pilha import *
 
 # lst_posIni()
 
-lst_prox()
+# lst_prox()
 
-exibe()
+# exibe()
 
+# result = pilha_vazia()
+# pilha_push(4)
+# exibe()
+
+# result = pilha_pop()
+# print(result)
 # lst_vazia()

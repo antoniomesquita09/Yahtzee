@@ -1,4 +1,16 @@
-__all__=['exibe', 'lst_vazia', 'lst_insIni', 'lst_insFin', 'lst_retIni', 'lst_retFin', 'lst_posIni', 'lst_prox']
+__all__=[
+            'exibe',
+            'lst_vazia',
+            'lst_insIni',
+            'lst_insFin',
+            'lst_retIni',
+            'lst_retFin',
+            'lst_posIni',
+            'lst_prox',
+            'pilha_vazia',
+            'pilha_push',
+            'pilha_pop',
+        ]
 
 def lst_vazia():
     if myList==[]:
@@ -7,33 +19,53 @@ def lst_vazia():
 
 def lst_insIni(elem):
     myList.insert(-1, elem)
+    return
 
 def lst_insFin(elem):
     myList.append(elem)
+    return
 
 def lst_retIni():
-    myList.pop(0)
+    if lst_vazia() == True:
+        return None
+    return myList.pop(0)
 
 def lst_retFin():
-    myList.pop(-1)
+    if lst_vazia() == True:
+        return None
+    return myList.pop(-1)
 
 def lst_posIni():
-    if myList==[]:
+    if lst_vazia() == True:
         return myList.append(None)
     current = myList.pop(0)
     return myList.append(current)
 
 def lst_prox():
-    if myList==[]:
+    if lst_vazia() == True:
         return myList.append(None)
     current = myList.pop(0)
     myList.insert(1, current)
     return current
 
-def exibe():
-    if lst_vazia() == True:
-        print('lista vazia true')
-        return
-    print('lista vazia false:', myList)
+def pilha_vazia():
+    if myStack == []:
+        return True
+    return False
 
-myList=[1,2,3]
+def pilha_push(elem):
+    myStack.append(elem)
+    return
+
+def pilha_pop():
+    if pilha_vazia() == True:
+        return None
+    current = myStack.pop(-1)
+    return current
+
+def exibe():
+    print('My list:', myList)
+    print('My stack:', myStack)
+
+myList=[]
+myStack=[]
