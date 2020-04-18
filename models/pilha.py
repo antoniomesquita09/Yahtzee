@@ -1,5 +1,5 @@
 __all__=[
-            'exibe',
+            'retList',
             'lst_vazia',
             'lst_insIni',
             'lst_insFin',
@@ -63,9 +63,10 @@ def pilha_pop():
     current = myStack.pop(-1)
     return current
 
-def exibe():
+def retList():
     print('My list:', myList)
-    print('My stack:', myStack)
+    # print('My stack:', myStack)
+    return myList
 
 myList=[]
 myStack=[]
