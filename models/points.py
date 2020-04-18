@@ -13,12 +13,6 @@ __all__=[
 def countDices(dices, num):
     return dices.count(num)
 
-def sumDices():
-    if lst_vazia() == True:
-        return 0
-    value = lst_retIni()
-    return sumDices() + value
-
 def ones(dices):
     count = countDices(dices, 1)
     return count
@@ -52,15 +46,15 @@ def threeOfKind(dices):
     countSix = countDices(dices, 6)
 
     if (countOne >= 3):
-        return sumDices()
+        return sum(dices)
     if (countTwo >= 3):
-        return sumDices()
+        return sum(dices)
     if (countThree >= 3):
-        return sumDices()
+        return sum(dices)
     if (countFour >= 3):
-        return sumDices()
+        return sum(dices)
     if (countFive >= 3):
-        return sumDices()
+        return sum(dices)
     if (countSix >= 3):
-        return sumDices()
+        return sum(dices)
     return 0
