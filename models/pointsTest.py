@@ -20,20 +20,28 @@ def testFives(dices):
     assert fives(dices) == 5
 
 def testSixes(dices):
-    assert sixes(dices) == 6
+    assert sixes(dices) == 0
 
 def testThreeOfKind(dices):
     assert threeOfKind(dices) == 0
 
-randDices = [1, 2, 3, 4, 5, 6]
+def testFourOfKind(dices):
+    assert fourOfKind(dices) == 0
+
+def testFullHouse(dices):
+    assert fullHouse(dices) == 0
+
+testDices = [1, 2, 3, 4, 5]
 
 def runTests():
-    testOnes(randDices)
-    testTwos(randDices)
-    testThrees(randDices)
-    testFours(randDices)
-    testFives(randDices)
-    testSixes(randDices)
-    testThreeOfKind(randDices)
-    print('Tests passed successfully!')
+    testOnes(testDices)
+    testTwos(testDices)
+    testThrees(testDices)
+    testFours(testDices)
+    testFives(testDices)
+    testSixes(testDices)
+    testThreeOfKind(testDices)
+    testFourOfKind(testDices)
+    testFullHouse(testDices)
+    print('========> Tests passed successfully! <=========')
     return

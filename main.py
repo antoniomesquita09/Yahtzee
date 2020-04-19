@@ -11,11 +11,10 @@ lst_insFin(random.randint(1,6))
 lst_insFin(random.randint(1,6))
 lst_insFin(random.randint(1,6))
 lst_insFin(random.randint(1,6))
-lst_insFin(random.randint(1,6))
 
 # lista de dados
 
-dices = retList()
+# dices = retList()
 
 # run unit tests from points
 
@@ -23,6 +22,9 @@ runTests()
 
 # testa uma jogada em trinca
 
-result = threeOfKind(dices)
+# result = threeOfKind(dices)
+dices = [1,2,1,2,1]
+result = fullHouse(dices)
 
-print('Trinca:', result)
+print('fulhouse points:: ', result)
+
