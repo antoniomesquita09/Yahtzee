@@ -1,8 +1,8 @@
 import random
 
 from models.pilha import *
-from models.points import *
-from models.pointsTest import *
+from models.rules.points import *
+from models.rules.pointsTest import *
 
 # simular dados
 
