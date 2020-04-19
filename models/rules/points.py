@@ -9,11 +9,25 @@ __all__=[
             'sixes',
             'threeOfKind',
             'fourOfKind',
-            'fullHouse'
+            'fullHouse',
+            'smallSequence',
+            'bigSequence',
+            'yahtzee',
+            'chance',
         ]
 
 def countDices(dices, num):
     return dices.count(num)
+
+def countEachDice(dices):
+    eachDice = []
+    eachDice.append(countDices(dices, 1))
+    eachDice.append(countDices(dices, 2))
+    eachDice.append(countDices(dices, 3))
+    eachDice.append(countDices(dices, 4))
+    eachDice.append(countDices(dices, 5))
+    eachDice.append(countDices(dices, 6))
+    return eachDice
 
 def equalDices(dices):
     return dices[1:] == dices[:-1]
@@ -43,56 +57,41 @@ def sixes(dices):
     return count * 6
 
 def threeOfKind(dices):
-    countOne = countDices(dices, 1)
-    countTwo = countDices(dices, 2)
-    countThree = countDices(dices, 3)
-    countFour = countDices(dices, 4)
-    countFive = countDices(dices, 5)
-    countSix = countDices(dices, 6)
+    count = countEachDice(dices)
 
-    if (countOne >= 3):
+    if (count[0] >= 3):
         return sum(dices)
-    if (countTwo >= 3):
+    if (count[1] >= 3):
         return sum(dices)
-    if (countThree >= 3):
+    if (count[2] >= 3):
         return sum(dices)
-    if (countFour >= 3):
+    if (count[3] >= 3):
         return sum(dices)
-    if (countFive >= 3):
+    if (count[4] >= 3):
         return sum(dices)
-    if (countSix >= 3):
+    if (count[5] >= 3):
         return sum(dices)
     return 0
 
 def fourOfKind(dices):
-    countOne = countDices(dices, 1)
-    countTwo = countDices(dices, 2)
-    countThree = countDices(dices, 3)
-    countFour = countDices(dices, 4)
-    countFive = countDices(dices, 5)
-    countSix = countDices(dices, 6)
+    count = countEachDice(dices)
 
-    if (countOne >= 4):
+    if (count[0] >= 4):
         return sum(dices)
-    if (countTwo >= 4):
+    if (count[1] >= 4):
         return sum(dices)
-    if (countThree >= 4):
+    if (count[2] >= 4):
         return sum(dices)
-    if (countFour >= 4):
+    if (count[3] >= 4):
         return sum(dices)
-    if (countFive >= 4):
+    if (count[4] >= 4):
         return sum(dices)
-    if (countSix >= 4):
+    if (count[5] >= 4):
         return sum(dices)
     return 0
 
 def fullHouse(dices):
-    countOne = countDices(dices, 1)
-    countTwo = countDices(dices, 2)
-    countThree = countDices(dices, 3)
-    countFour = countDices(dices, 4)
-    countFive = countDices(dices, 5)
-    countSix = countDices(dices, 6)
+    count = countEachDice(dices)
 
     def checkRest(allDices, elem):
         rest = list(filter(lambda a: a != elem, allDices))
@@ -100,21 +99,74 @@ def fullHouse(dices):
             return 25
         return 0
 
-    if(countOne == 3):
+    if(count[0] == 3):
         return checkRest(dices, 1)
 
-    if(countTwo == 3):
+    if(count[1] == 3):
         return checkRest(dices, 2)
 
-    if(countThree == 3):
+    if(count[2] == 3):
         return checkRest(dices, 3)
 
-    if(countFour == 3):
+    if(count[3] == 3):
         return checkRest(dices, 4)
 
-    if(countFive == 3):
+    if(count[4] == 3):
         return checkRest(dices, 5)
 
-    if(countSix == 3):
+    if(count[5] == 3):
         return checkRest(dices, 6)
     return 0
+
+def smallSequence(dices):
+    count = countEachDice(dices)
+
+    if (
+        count[0] >= 1 and
+        count[1] >= 1 and
+        count[2] >= 1 and
+        count[3] >= 1
+        ): return 30
+
+    if (
+        count[1] >= 1 and
+        count[2] >= 1 and
+        count[3] >= 1 and
+        count[4] >= 1
+        ): return 30
+
+    if (
+        count[2] >= 1 and
+        count[3] >= 1 and
+        count[4] >= 1 and
+        count[5] >= 1
+        ): return 30
+    return 0
+
+def bigSequence(dices):
+    count = countEachDice(dices)
+
+    if (
+        count[0] >= 1 and
+        count[1] >= 1 and
+        count[2] >= 1 and
+        count[3] >= 1 and
+        count[4] >= 1
+        ): return 40
+
+    if (
+        count[1] >= 1 and
+        count[2] >= 1 and
+        count[3] >= 1 and
+        count[4] >= 1 and
+        count[5] >= 1
+        ): return 40
+    return 0
+
+def yahtzee(dices):
+    if(equalDices(dices)):
+        return 50
+    return 0
+
+def chance(dices):
+    return sum(dices)

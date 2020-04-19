@@ -23,13 +23,30 @@ def testSixes(dices):
     assert sixes(dices) == 0
 
 def testThreeOfKind(dices):
+    supposedToPass = [1,2,1,1,1]
+    assert threeOfKind(supposedToPass) == sum(supposedToPass)
     assert threeOfKind(dices) == 0
 
 def testFourOfKind(dices):
+    supposedToPass = [1,2,1,1,1]
+    assert fourOfKind(supposedToPass) == sum(supposedToPass)
     assert fourOfKind(dices) == 0
 
 def testFullHouse(dices):
+    supposedToPass = [1,2,1,2,2]
+    assert fullHouse(supposedToPass) == 25
     assert fullHouse(dices) == 0
+
+def testSmallSequence(dices):
+    supposedToFail = [1,1,1,2,4]
+    assert smallSequence(supposedToFail) == 0
+    assert smallSequence(dices) == 30
+
+def testYahtzee(dices):
+    assert yahtzee(dices) == 0
+
+def testChance(dices):
+    assert chance(dices) == 15
 
 testDices = [1, 2, 3, 4, 5]
 
@@ -43,5 +60,8 @@ def runTests():
     testThreeOfKind(testDices)
     testFourOfKind(testDices)
     testFullHouse(testDices)
+    testSmallSequence(testDices)
+    testYahtzee(testDices)
+    testChance(testDices)
     print('========> Tests passed successfully! <=========')
-    return
+    return True

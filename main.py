@@ -23,8 +23,8 @@ runTests()
 # testa uma jogada em trinca
 
 # result = threeOfKind(dices)
-dices = [1,2,1,2,1]
-result = fullHouse(dices)
+dices = [6,2,3,4,5]
+result = smallSequence(dices)
 
-print('fulhouse points:: ', result)
+print('smallSequence points:: ', result)
 
