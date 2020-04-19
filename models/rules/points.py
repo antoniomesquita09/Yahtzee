@@ -147,19 +147,19 @@ def bigSequence(dices):
     count = countEachDice(dices)
 
     if (
-        count[0] >= 1 and
-        count[1] >= 1 and
-        count[2] >= 1 and
-        count[3] >= 1 and
-        count[4] >= 1
+        count[0] == 1 and
+        count[1] == 1 and
+        count[2] == 1 and
+        count[3] == 1 and
+        count[4] == 1
         ): return 40
 
     if (
-        count[1] >= 1 and
-        count[2] >= 1 and
-        count[3] >= 1 and
-        count[4] >= 1 and
-        count[5] >= 1
+        count[1] == 1 and
+        count[2] == 1 and
+        count[3] == 1 and
+        count[4] == 1 and
+        count[5] == 1
         ): return 40
     return 0
 

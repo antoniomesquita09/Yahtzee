@@ -42,6 +42,11 @@ def testSmallSequence(dices):
     assert smallSequence(supposedToFail) == 0
     assert smallSequence(dices) == 30
 
+def testBigSequence(dices):
+    supposedToFail = [1,1,1,2,4]
+    assert bigSequence(supposedToFail) == 0
+    assert bigSequence(dices) == 40
+
 def testYahtzee(dices):
     assert yahtzee(dices) == 0
 
@@ -61,6 +66,7 @@ def runTests():
     testFourOfKind(testDices)
     testFullHouse(testDices)
     testSmallSequence(testDices)
+    testBigSequence(testDices)
     testYahtzee(testDices)
     testChance(testDices)
     print('========> Tests passed successfully! <=========')
