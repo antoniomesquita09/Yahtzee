@@ -8,10 +8,19 @@ Se os dados 2 e 4 devem ser fixados dadosFixos = 01010
 '''
 
 __all__=[
-    'rodaDados',
+    'rollDices',
+    'initDices'
 ]
 
-def rodaDados(dices, dadosFixos):
+def initDices():
+    init.append(0)
+    init.append(0)
+    init.append(0)
+    init.append(0)
+    init.append(0)
+    return init
+
+def rollDices(dices, dadosFixos):
     if dadosFixos >= 10000:
         dadosFixos = dadosFixos - 10000
     else:
@@ -38,3 +47,4 @@ def rodaDados(dices, dadosFixos):
         dices[4] = random.randint(1,6)
     return dices
 
+init = []

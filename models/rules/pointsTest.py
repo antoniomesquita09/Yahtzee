@@ -1,7 +1,7 @@
 from points import *
 
 __all__=[
-    'runTests',
+    'runPointsTests',
 ]
 
 def testOnes(dices):
@@ -55,7 +55,7 @@ def testChance(dices):
 
 testDices = [1, 2, 3, 4, 5]
 
-def runTests():
+def runPointsTests():
     testOnes(testDices)
     testTwos(testDices)
     testThrees(testDices)

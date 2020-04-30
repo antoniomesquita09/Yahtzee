@@ -1,33 +1,30 @@
-import random
-
 from models.pilha import *
 from models.rules.points import *
 from models.rules.pointsTest import *
 from models.dices.dices import *
 from models.dices.dicesTest import *
 
-# simular dados
+dices = initDices()
+rollDices(dices, 0)
 
-lst_insFin(random.randint(1,6))
-lst_insFin(random.randint(1,6))
-lst_insFin(random.randint(1,6))
-lst_insFin(random.randint(1,6))
-lst_insFin(random.randint(1,6))
+# simular Full House
 
-# lista de dados
+result = fullHouse(dices)
+print("Dices: ", dices)
+print("Points from a full House", result)
 
-# dices = retList()
+## TESTS
+# Run unit tests from points
 
-# run unit tests from points
+runPointsTests()
 
-runTests()
+# Run unit tests from points
+
 runDicesTests()
 
-# testa uma jogada em trinca
+#    lambda a: a!=elem
 
-# result = threeOfKind(dices)
-dices = [6,2,3,4,5]
-result = rodaDados(dices, 1)
+# is equal as::::
 
-print('result:: ', result)
-
+#   def func(a):
+#       return a !=elem
