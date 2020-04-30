@@ -3,6 +3,7 @@ import random
 from models.pilha import *
 from models.rules.points import *
 from models.rules.pointsTest import *
+from models.dices.dices import *
 
 # simular dados
 
@@ -24,7 +25,7 @@ runTests()
 
 # result = threeOfKind(dices)
 dices = [6,2,3,4,5]
-result = smallSequence(dices)
+result = rodaDados(dices, 1)
 
-print('smallSequence points:: ', result)
+print('result:: ', result)
 
