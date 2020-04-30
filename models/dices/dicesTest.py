@@ -5,7 +5,7 @@ __all__=[
 ]
 
 
-def testRodaDados(dices):
+def testRollDices(dices):
     test = dices[0:5]
     rollDices(test,11111)
     assert test == dices
@@ -27,9 +27,14 @@ def testRodaDados(dices):
     rollDices(test,1)
     assert test[4] == dices[4]
 
+def testInitDices():
+    test = initDices()
+    assert test == [0, 0, 0, 0, 0]
+
 testDices = [1, 2, 3, 4, 5]
 
 def runDicesTests():
-    testRodaDados(testDices)
+    testInitDices()
+    testRollDices(testDices)
     print('========> Dices tests passed successfully! <=========')
     return True

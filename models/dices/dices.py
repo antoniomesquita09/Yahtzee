@@ -13,11 +13,7 @@ __all__=[
 ]
 
 def initDices():
-    init.append(0)
-    init.append(0)
-    init.append(0)
-    init.append(0)
-    init.append(0)
+    init = [0, 0, 0, 0, 0]
     return init
 
 def rollDices(dices, dadosFixos):
@@ -46,5 +42,3 @@ def rollDices(dices, dadosFixos):
     else:
         dices[4] = random.randint(1,6)
     return dices
-
-init = []
