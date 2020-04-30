@@ -21,10 +21,3 @@ runPointsTests()
 # Run unit tests from points
 
 runDicesTests()
-
-#    lambda a: a!=elem
-
-# is equal as::::
-
-#   def func(a):
-#       return a !=elem
