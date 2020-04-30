@@ -4,6 +4,7 @@ from models.pilha import *
 from models.rules.points import *
 from models.rules.pointsTest import *
 from models.dices.dices import *
+from models.dices.dicesTest import *
 
 # simular dados
 
@@ -20,6 +21,7 @@ lst_insFin(random.randint(1,6))
 # run unit tests from points
 
 runTests()
+runDicesTests()
 
 # testa uma jogada em trinca
 

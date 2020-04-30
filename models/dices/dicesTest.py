@@ -1,7 +1,7 @@
 from dices import *
 
 __all__=[
-    'runTests',
+    'runDicesTests',
 ]
 
 
@@ -29,9 +29,7 @@ def testRodaDados(dices):
 
 testDices = [1, 2, 3, 4, 5]
 
-def runTests():
+def runDicesTests():
     testRodaDados(testDices)
-    print('========> Tests passed successfully! <=========')
+    print('========> Dices tests passed successfully! <=========')
     return True
-
-runTests()

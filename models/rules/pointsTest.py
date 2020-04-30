@@ -69,5 +69,5 @@ def runTests():
     testBigSequence(testDices)
     testYahtzee(testDices)
     testChance(testDices)
-    print('========> Tests passed successfully! <=========')
+    print('========> Points tests passed successfully! <=========')
     return True
