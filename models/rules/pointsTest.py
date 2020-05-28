@@ -1,4 +1,4 @@
-from points import *
+from .points import *
 
 __all__=[
     'runPointsTests',

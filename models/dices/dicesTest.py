@@ -1,4 +1,4 @@
-from dices import *
+from .dices import *
 
 __all__=[
     'runDicesTests',
