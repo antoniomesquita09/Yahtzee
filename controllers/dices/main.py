@@ -1,6 +1,39 @@
 from tkinter import *
 
-from dices import *
+from .models.dices.dices import rollDices
+
+__all__=[
+    'rollDicesController',
+]
+
+# def destroyWindow(box):
+#     box.destroy()
+
+# def buildCanvas(root,img):
+#     #Criação de uma janela secundária
+#     box = Toplevel(root)
+#     box.title("Lançamento dos Dados")
+#     box.geometry("300x300")
+
+#     # Criação do canvas da janela secundária
+#     canvas = Canvas(box,width=300,height=200,bg="Pink")
+
+#     # Exibição das imagens no canvas
+#     x=20
+#     for i in range(0,6):
+#         canvas.create_image(x,20, anchor=NW, image=img[i])
+#         x=x+40
+
+#     canvas.pack()
+
+#     # Criação do botão de fechamento da janela secundária
+#     bc = Button(box, text = "Fechar",activeforeground = "yellow",activebackground = "pink",pady = 10)
+#     bc.config(command=lambda: destroyWindow(box))
+#     bc.pack(padx=120, pady=30)
+#     bc.pack(side = BOTTOM)
+
+#     # Redesenha a janela secundária para que as imagens sejam exibidas
+#     box.update()
 
 def fechaJanela(box):
     box.destroy()
@@ -8,19 +41,19 @@ def fechaJanela(box):
 def criaImagens(dados,img):
     for i in dados:
         if i == 1:
-            img.append(PhotoImage(file="dado_1.png"))
+            img.append(PhotoImage(file="assets/dado_1.png"))
         elif i == 2:
-            img.append(PhotoImage(file="dado_2.png"))
+            img.append(PhotoImage(file="assets/dado_2.png"))
         elif i == 3:
-            img.append(PhotoImage(file="dado_3.png"))
+            img.append(PhotoImage(file="assets/dado_3.png"))
         elif i == 4:
-            img.append(PhotoImage(file="dado_4.png"))
+            img.append(PhotoImage(file="assets/dado_4.png"))
         elif i == 5:
-            img.append(PhotoImage(file="dado_5.png"))
+            img.append(PhotoImage(file="assets/dado_5.png"))
         elif i == 6:
-            img.append(PhotoImage(file="dado_6.png"))
+            img.append(PhotoImage(file="assets/dado_6.png"))
 
-def lancaDados(root,img):
+def rollDicesController(root,img):
     
     
     #Criação de uma janela secundária
@@ -92,7 +125,7 @@ liDado5.place(x = 75,y = 170)
 
 # Botão de ativação dos dados
 b1 = Button(root, text = "Lancar Dados",activeforeground = "yellow",activebackground = "pink",pady = 10)
-b1.config(command=lambda: lancaDados(root,img))
+b1.config(command=lambda: rollDicesController(root,img))
 b1.pack(padx=120, pady=30)
 b1.pack(side = BOTTOM)
 
@@ -101,4 +134,4 @@ dados = [0,0,0,0,0]
 rollDices(dados,0)
 criaImagens(dados,img)
 root.update()
-lancaDados(root,img)
+rollDicesController(root,img)
