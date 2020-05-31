@@ -1,4 +1,4 @@
-from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage
+from tkinter import Tk
 
 from models.dices.dices import initDices
 from .dices import createLabel
