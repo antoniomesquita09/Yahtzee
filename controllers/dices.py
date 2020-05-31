@@ -57,14 +57,14 @@ def dicesCanvas(root, imageList):
         root.canvas.destroy()
     canvas = Canvas(root, width=300, height=200, bg="Green")
     root.canvas = canvas
-    canvas.place(x = 5, y = 5)
     x = 20
-    
+
     for i in range(0, 5):
         canvas.create_image(x, 20, anchor = NW, image = imageList[i])
         x = x + 40
 
-    canvas.pack()
+    canvas.place(x = 500, y = 500)
+    # canvas.pack()
 
     # bc = Button(box, text = "Fechar", activeforeground = "yellow", activebackground = "pink", pady = 10)
     # bc.config(command = lambda: closeWindow(box))
