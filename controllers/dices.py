@@ -6,6 +6,10 @@ __all__=[
     'createLabel',
 ]
 countRoll = 0
+
+def callback(event):
+    print ("clicked at", event.x, event.y)
+
 def createLabel(root, dices):
     # lbDado1 = Label(root, text = "Dado1", width = 12, anchor = "w")
     # lbDado1.place(x = 10,y = 10)
@@ -57,14 +61,16 @@ def dicesCanvas(root, imageList):
         root.canvas.destroy()
     canvas = Canvas(root, width=300, height=200, bg="Green")
     root.canvas = canvas
-    canvas.place(x = 5, y = 5)
+    canvas.place(x = 400, y = 500)
+    canvas.bind("<Button-1>", callback)
+
     x = 20
     
     for i in range(0, 5):
         canvas.create_image(x, 20, anchor = NW, image = imageList[i])
         x = x + 40
 
-    canvas.pack()
+
 
     # bc = Button(box, text = "Fechar", activeforeground = "yellow", activebackground = "pink", pady = 10)
     # bc.config(command = lambda: closeWindow(box))

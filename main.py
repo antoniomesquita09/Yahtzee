@@ -15,4 +15,3 @@ runDicesTests()
 
 root()
 
-print('test')
