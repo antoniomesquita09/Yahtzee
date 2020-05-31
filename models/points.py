@@ -12,7 +12,61 @@ __all__=[
             'bigSequence',
             'yahtzee',
             'chance',
+            'executePlaySup',
+            'executePlayInf',
+            'roundCounter',
         ]
+
+countRounds = 1
+
+playsSup = [
+    False,  # ones
+    False,  # twos
+    False,  # threes
+    False,  # fours
+    False,  # fives
+    False,  # sixes
+    False,  # bonus
+    0,  # total
+]
+
+playsInf = [
+    False, # tripple
+    False, # four
+    False, # fullhouse
+    False, # small
+    False, # big
+    False, # yahtzee
+    False, # chance
+    False, # bonus
+    0, # total
+]
+
+def roundCounter():
+    global countRounds
+    return countRounds
+
+def executePlaySup(index, value):
+    global playsSup, countRounds
+
+    if (playsSup[index] != False):
+        print('Jogada já executada!')
+        return
+    countRounds += 1
+    playsSup[index] = value
+    playsSup[7] += value
+    return playsSup
+
+def executePlayInf(index, value):
+    global playsInf, countRounds
+    
+    if (playsInf[index] != False):
+        print('Jogada já executada!')
+        return
+    countRounds += 1
+    playsInf[index] = value
+    playsInf[8] += value
+    return playsInf
 
 def countDices(dices, num):
     return dices.count(num)
