@@ -6,7 +6,9 @@ __all__=[
     'createLabel',
     'rollDicesController',
     'canvasClick',
+    'resetCountRoll',
 ]
+
 countRoll = 0
 maintain1 = False
 maintain2 = False
@@ -22,49 +24,43 @@ def canvasClick(event):
     global maintain4
     global maintain5
     global maintainNumber
-    print ("clicked at", event.x, event.y)
     if event.y >= 20 and event.y <=50:
         if event.x >= 20 and event.x <=50:
             if not maintain1:
-                print("Dado1 marcado")
                 maintainNumber -= 10000
             else:
-                print("Dado1 desmarcado")
                 maintainNumber += 10000
             maintain1 = not maintain1
         if event.x >= 60 and event.x <=90:
             if not maintain2:
-                print("Dado2 marcado")
                 maintainNumber -= 1000
             else:
-                print("Dado2 desmarcado")
                 maintainNumber += 1000
             maintain2 = not maintain2
         if event.x >= 100 and event.x <=130:
             if not maintain3:
-                print("Dado3 marcado")
                 maintainNumber -= 100
             else:
-                print("Dado3 desmarcado")
                 maintainNumber += 100
             maintain3 = not maintain3
         if event.x >= 140 and event.x <=170:
             if not maintain4:
-                print("Dado4 marcado")
                 maintainNumber -= 10
             else:
-                print("Dado4 desmarcado")
                 maintainNumber += 10
             maintain4 = not maintain4
         if event.x >= 180 and event.x <=210:
             if not maintain5:
-                print("Dado5 marcado")
                 maintainNumber -= 1
             else:
-                print("Dado5 desmarcado")
                 maintainNumber += 1
             maintain5 = not maintain5
     return
+
+def resetCountRoll():
+    global countRoll
+    countRoll = 0
+    return countRoll
 
 def rollDicesController(root, dices):
     global countRoll
@@ -79,11 +75,9 @@ def rollDicesController(root, dices):
     elif countRoll < 3:
         rollDices(dices,maintainNumber)
     else:
-        print("Número maximo de lançadas atingido")
+        return False
     imageList = appendImages(dices, root)
     createCanvas(root, imageList)
-    if (countRoll == 3):
-        return
     countRoll += 1
     maintain1 = False
     maintain2 = False
