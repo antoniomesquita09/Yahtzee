@@ -1,22 +1,19 @@
 from tkinter import Tk
 
 from models.dices.dices import initDices
-from .dices import createLabel
-from .play import rootPlay
+from .dices import rootDices
 
 __all__=[
     'root',
 ]
 
 def root():
-
     dices = initDices()
 
     root = Tk()
     root.geometry("800x800")
     root.title("Jogo")
-    createLabel(root, dices)
-    rootPlay(root, dices)
+    rootDices(root, dices)
 
     root.mainloop()
     return

@@ -1,6 +1,6 @@
 from models.rules.pointsTest import runPointsTests
 from models.dices.dicesTest import runDicesTests
-from controllers.main import root
+from views.main import root
 
 ## TESTS
 # Run unit tests from points
