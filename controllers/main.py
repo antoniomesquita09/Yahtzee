@@ -14,10 +14,6 @@ def root():
     root.geometry("400x400")
     root.title("Jogo")
 
-
-
-
-
     lbDado1 = Label(root, text = "Dado1", width = 12, anchor = "w")
     lbDado1.place(x = 10,y = 10)
     var1 = IntVar()
@@ -49,17 +45,18 @@ def root():
     c5.place(x = 75 ,y = 170)
 
     b1 = Button(root, text = "Lancar Dados", activeforeground = "yellow", activebackground = "pink", pady = 10)
-    b1.config(command=lambda: rollDicesController(root,dices,var5.get(),var4.get(),var3.get(),var2.get(),var1.get()))
+    b1.config(command=lambda: rollDicesController( root, dices, var5.get(), var4.get(), var3.get(), var2.get(), var1.get()))
     b1.pack(padx=120, pady=30)
     b1.pack(side = BOTTOM)
     b1.place(x = 25 ,y = 300)
 
 
     root.mainloop()
+    return
 
 
-def rollDicesController(root,dices,dice5,dice4,dice3,dice2,dice1):
-    FixNumber = dice1 + dice2*10 + dice3*100 + dice4*1000 + dice5*10000
+def rollDicesController(root, dices, dice5, dice4, dice3, dice2, dice1):
+    FixNumber = dice5 + dice4*10 + dice3*100 + dice2*1000 + dice1*10000
     rollDices(dices,FixNumber)
     imageList = createCanvas(dices, root)
     dicesCanvas(root, imageList)
