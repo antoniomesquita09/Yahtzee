@@ -1,5 +1,5 @@
-from models.rules.pointsTest import runPointsTests
-from models.dices.dicesTest import runDicesTests
+from models.tests.pointsTest import runPointsTests
+from models.tests.dicesTest import runDicesTests
 from views.main import root
 
 ## TESTS

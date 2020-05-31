@@ -1,6 +1,6 @@
 from tkinter import Tk
 
-from models.dices.dices import initDices
+from models.dices import initDices
 from .dices import rootDices
 
 __all__=[

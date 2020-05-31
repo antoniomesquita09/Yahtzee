@@ -1,6 +1,6 @@
 from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage
 
-from models.dices.dices import rollDices
+from models.dices import rollDices
 
 __all__=[
     'createLabel',

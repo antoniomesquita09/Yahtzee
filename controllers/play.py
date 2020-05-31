@@ -1,7 +1,6 @@
 from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage
 
-from models.dices.dices import rollDices
-from models.rules.points import ones, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smallSequence, bigSequence,  yahtzee, chance
+from models.points import ones, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smallSequence, bigSequence,  yahtzee, chance
 
 __all__=[
     'executePlay',

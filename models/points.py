@@ -1,4 +1,4 @@
-from ..pilha import *
+from .pilha import *
 
 __all__=[
             'ones',
