@@ -1,11 +1,5 @@
-# -*- coding: utf-8 -*-
+
 import random
-'''dadosFixos é um número que representa os dados que devem ser fixados:
-Se o dado n deve ser fixado, então deve ser acrescentado 1x10^n à esse
-número
-ex:
-Se os dados 2 e 4 devem ser fixados dadosFixos = 01010
-'''
 
 __all__=[
     'rollDices',

@@ -12,7 +12,7 @@ def root():
 
     root = Tk()
     root.geometry("800x800")
-    root.title("Jogo")
+    root.title("Yahtzee")
     rootDices(root, dices)
 
     root.mainloop()

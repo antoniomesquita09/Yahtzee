@@ -1,5 +1,3 @@
-from .pilha import *
-
 __all__=[
             'ones',
             'twos',

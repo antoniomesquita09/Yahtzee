@@ -1,4 +1,4 @@
-from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage
+from tkinter import NW, Canvas, PhotoImage
 
 from models.dices import rollDices
 
@@ -128,6 +128,3 @@ def appendImages(dices, root):
             img.append(PhotoImage(file="assets/dado_6.png"))
     root.img = img
     return img
-
-# def closeWindow(box):
-#     box.destroy()
