@@ -16,7 +16,7 @@ def root():
     root.geometry("800x800")
     root.title("Jogo")
     createLabel(root, dices)
-    rootPlay(root)
+    rootPlay(root, dices)
 
     root.mainloop()
     return

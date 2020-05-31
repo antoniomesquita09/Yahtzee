@@ -41,7 +41,7 @@ def createLabel(root, dices):
     b1.config(command=lambda: rollDicesController( root, dices))
     b1.pack(padx=120, pady=30)
     b1.pack(side = BOTTOM)
-    b1.place(x = 25 , y = 300)
+    b1.place(x = 150 , y = 500)
 
 
 def rollDicesController(root, dices):
