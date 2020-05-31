@@ -14,3 +14,5 @@ runDicesTests()
 # Run canvas
 
 root()
+
+print('test')
