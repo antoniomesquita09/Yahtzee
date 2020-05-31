@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage
+from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage
 
 from models.dices.dices import rollDices, initDices
 
@@ -7,59 +7,60 @@ __all__=[
 ]
 
 def root():
+
+    dices = initDices()
+
     root = Tk()
     root.geometry("400x400")
     root.title("Jogo")
 
-    labelFactory(root)
 
-    b1 = Button(root, text = "Lancar Dados", activeforeground = "yellow", activebackground = "pink", pady = 10)
-    b1.config(command=lambda: rollDicesController(root))
-    b1.pack(padx=120, pady=30)
-    b1.pack(side = BOTTOM)
 
-    root.mainloop()
 
-def labelFactory(root):
+
     lbDado1 = Label(root, text = "Dado1", width = 12, anchor = "w")
     lbDado1.place(x = 10,y = 10)
-    liDado1 = Listbox(root, width = 10,height = 2, selectmode = SINGLE) 
-    liDado1.insert(0,"rodar")
-    liDado1.insert(1,"manter")
-    liDado1.place(x = 75,y = 10)
+    var1 = IntVar()
+    c1 =  Checkbutton(root, text="manter", variable=var1)
+    c1.place(x = 75 ,y = 10)
 
     lbDado2 = Label(root, text = "Dado2", width = 12, anchor = "w")
     lbDado2.place(x = 10,y = 50)
-    liDado2 = Listbox(root, width = 10,height = 2, selectmode = SINGLE) 
-    liDado2.insert(0,"rodar")
-    liDado2.insert(1,"manter")
-    liDado2.place(x = 75,y = 50)
+    var2 = IntVar()
+    c2 =  Checkbutton(root, text="manter", variable=var2)
+    c2.place(x = 75 ,y = 50)
 
     lbDado3 = Label(root, text = "Dado3", width = 12, anchor = "w")
     lbDado3.place(x = 10, y = 90)
-    liDado3 = Listbox(root, width = 10,height = 2, selectmode = SINGLE) 
-    liDado3.insert(0, "rodar")
-    liDado3.insert(1, "manter")
-    liDado3.place(x = 75, y = 90)
+    var3 = IntVar()
+    c3 =  Checkbutton(root, text="manter", variable=var3)
+    c3.place(x = 75 ,y = 90)
 
     lbDado4 = Label(root, text = "Dado4", width = 12, anchor = "w")
     lbDado4.place(x = 10, y = 130)
-    liDado4 = Listbox(root, width = 10,height = 2, selectmode = SINGLE) 
-    liDado4.insert(0,"rodar")
-    liDado4.insert(1,"manter")
-    liDado4.place(x = 75, y = 130)
+    var4 = IntVar()
+    c4 =  Checkbutton(root, text="manter", variable=var4)
+    c4.place(x = 75 ,y = 130)
 
     lbDado5 = Label(root, text = "Dado5", width = 12, anchor = "w")
     lbDado5.place(x = 10, y = 170)
-    liDado5 = Listbox(root, width = 10,height = 2, selectmode = SINGLE) 
-    liDado5.insert(0,"rodar")
-    liDado5.insert(1,"manter")
-    liDado5.place(x = 75, y = 170)
-    return
+    var5 = IntVar()
+    c5 =  Checkbutton(root, text="manter", variable=var5)
+    c5.place(x = 75 ,y = 170)
 
-def rollDicesController(root):
-    dices = initDices()
-    rollDices(dices, 0)
+    b1 = Button(root, text = "Lancar Dados", activeforeground = "yellow", activebackground = "pink", pady = 10)
+    b1.config(command=lambda: rollDicesController(root,dices,var5.get(),var4.get(),var3.get(),var2.get(),var1.get()))
+    b1.pack(padx=120, pady=30)
+    b1.pack(side = BOTTOM)
+    b1.place(x = 25 ,y = 300)
+
+
+    root.mainloop()
+
+
+def rollDicesController(root,dices,dice5,dice4,dice3,dice2,dice1):
+    FixNumber = dice1 + dice2*10 + dice3*100 + dice4*1000 + dice5*10000
+    rollDices(dices,FixNumber)
     imageList = createCanvas(dices, root)
     dicesCanvas(root, imageList)
     return
