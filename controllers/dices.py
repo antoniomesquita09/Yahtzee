@@ -6,10 +6,28 @@ __all__=[
     'createLabel',
 ]
 countRoll = 0
+maintain1 = False
+maintain2 = False
+maintain3 = False
+maintain4 = False
+maintain5 = False
+maintainNumber = 0
 
 def callback(event):
+    global maintain1
+    global maintain2
+    global maintain3
+    global maintain4
+    global maintain5
+    global maintainNumber
     print ("clicked at", event.x, event.y)
+    if event.y >= 20 and event.y <=50:
+        if event.x >= 20 and event.x <=50:
+            if not maintain1:
+                maintainNumber += 
+            maintain1 = not maintain1
 
+            
 def createLabel(root, dices):
     # lbDado1 = Label(root, text = "Dado1", width = 12, anchor = "w")
     # lbDado1.place(x = 10,y = 10)
@@ -65,12 +83,13 @@ def dicesCanvas(root, imageList):
     canvas.bind("<Button-1>", callback)
 
     x = 20
-    
+
     for i in range(0, 5):
         canvas.create_image(x, 20, anchor = NW, image = imageList[i])
         x = x + 40
 
 
+    # canvas.pack()
 
     # bc = Button(box, text = "Fechar", activeforeground = "yellow", activebackground = "pink", pady = 10)
     # bc.config(command = lambda: closeWindow(box))
