@@ -1,4 +1,4 @@
-from .dices import *
+from ..dices import rollDices, initDices
 
 __all__=[
     'runDicesTests',

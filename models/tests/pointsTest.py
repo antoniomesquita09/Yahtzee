@@ -1,4 +1,4 @@
-from .points import *
+from ..points import ones, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smallSequence, bigSequence,  yahtzee, chance
 
 __all__=[
     'runPointsTests',
