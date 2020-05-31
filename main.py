@@ -7,10 +7,10 @@ from views.main import root
 
 runPointsTests()
 
-# Run unit tests from points
+# Run unit tests from dices
 
 runDicesTests()
 
-# Run canvas
+# Run root canvas
 
 root()
