@@ -3,6 +3,7 @@ from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW,
 from controllers.play import executePlay
 from controllers.dices import rollDicesController, canvasClick, resetCountRoll
 from models.points import roundCounter
+from models.table import playersTable
 
 __all__=[
     'rootDices',
@@ -108,6 +109,7 @@ def playOptions(root, dices):
 
         nextPlayer()
         handlePlayer(root, player)
+        initialPlays(root)
         rollCounter = resetCountRoll()
         handleCount(root, rollCounter)
         root.canvas.destroy()
@@ -147,6 +149,27 @@ def rollDicesButton(root, dices):
     b1.pack(padx=120, pady=30)
     b1.pack(side = BOTTOM)
     b1.place(x = 150 , y = 500)
+    return
+
+def initialPlays(root):
+    global valuesInf, valuesSup
+    arraySup = playersTable[player][0]
+    arrayInf = playersTable[player][1]
+    for i in range(0, len(arrayInf)):
+        value = valuesInf[i]
+        value = StringVar()
+        value.set(arrayInf[i])
+        valueLabel = valuesInf[i] + 'Lable'
+        valueLabel = Label(root, textvariable=value, width="10")
+        valueLabel.place(x = 700, y = i*50 + 10)
+    
+    for i in range(0, len(arraySup)):
+        value = valuesSup[i]
+        value = StringVar()
+        value.set(arraySup[i])
+        valueLabel = valuesSup[i] + 'Lable'
+        valueLabel = Label(root, textvariable=value, width="10")
+        valueLabel.place(x = 450, y = i*50 + 10)
     return
 
 def handlePlayer(root, player):
