@@ -1,3 +1,5 @@
+from .table import playersTable
+
 __all__=[
             'ones',
             'twos',
@@ -19,54 +21,37 @@ __all__=[
 
 countRounds = 1
 
-playsSup = [
-    False,  # ones
-    False,  # twos
-    False,  # threes
-    False,  # fours
-    False,  # fives
-    False,  # sixes
-    False,  # bonus
-    0,  # total
-]
+# playersTable[player][sup/inf][indexPlay]
 
-playsInf = [
-    False, # tripple
-    False, # four
-    False, # fullhouse
-    False, # small
-    False, # big
-    False, # yahtzee
-    False, # chance
-    False, # bonus
-    0, # total
-]
+def pointsCounter():
+    return playersTable
 
 def roundCounter():
     global countRounds
     return countRounds
 
 def executePlaySup(index, value):
-    global playsSup, countRounds
+    global countRounds
 
-    if (playsSup[index] != False):
+
+    if (playersTable[0][0][index] != ''):
         print('Jogada já executada!')
         return
     countRounds += 1
-    playsSup[index] = value
-    playsSup[7] += value
-    return playsSup
+    playersTable[0][0][index] = value
+    playersTable[0][0][7] += value
+    return playersTable[0][0]
 
 def executePlayInf(index, value):
-    global playsInf, countRounds
+    global countRounds
     
-    if (playsInf[index] != False):
+    if (playersTable[0][1][index] != ''):
         print('Jogada já executada!')
         return
     countRounds += 1
-    playsInf[index] = value
-    playsInf[8] += value
-    return playsInf
+    playersTable[0][1][index] = value
+    playersTable[0][1][8] += value
+    return playersTable[0][1]
 
 def countDices(dices, num):
     return dices.count(num)
