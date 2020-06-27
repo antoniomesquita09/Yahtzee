@@ -68,9 +68,12 @@ def playOptions(root, dices):
         valueLabel.place(x = 550, y = i*50 + 10)
 
     def handleClick(playList, dices):
-        array = executePlay(playList, dices)
+        array = executePlay(playList, dices, 0)
 
         if (array == None):
+            forbiddenPlay = Label(root, text = "Execute uma jogada válida!", width = 25, anchor = "w", bg='red')
+            forbiddenPlay.place(x = 80, y = 360)
+            root.forbiddenPlay = forbiddenPlay
             return
 
         xPostion = 450
@@ -86,7 +89,17 @@ def playOptions(root, dices):
             valueLabel = listLabel[i] + 'Lable'
             valueLabel = Label(root, textvariable=value)
             valueLabel.place(x = xPostion, y = i*50 + 10)
-        
+
+        try:
+            if (root.forbiddenRoll):
+                root.forbiddenRoll.destroy()
+        except:
+            print('Lançamento de dado permitido')
+        try:
+            if (root.forbiddenPlay):
+                root.forbiddenPlay.destroy()
+        except:
+            print('Jogada permitida')
         rollCounter = resetCountRoll()
         handleCount(root, rollCounter)
         root.canvas.destroy()
@@ -101,7 +114,7 @@ def rollDicesButton(root, dices):
     countPlayLabel.place(x = 10, y = 600)
     
     countRoundLabel = Label(root, text = "Round:", width = 50, anchor = "w")
-    countRoundLabel.place(x = 10, y = 700)
+    countRoundLabel.place(x = 10, y = 650)
 
     def handleClick(root, dices):
         # global countRoll, countRounds
@@ -129,7 +142,7 @@ def handleRound(root, roundsCounter):
     countRoundsVariable = StringVar()
     countRoundsVariable.set(roundsCounter)
     countRoundsLabel = Label(root, textvariable=countRoundsVariable)
-    countRoundsLabel.place(x = 150, y = 700)
+    countRoundsLabel.place(x = 150, y = 650)
     root.countRoundsLabel = countRoundsLabel
     return
 

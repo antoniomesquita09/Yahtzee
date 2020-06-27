@@ -1,4 +1,4 @@
-from tkinter import NW, Canvas, PhotoImage, Toplevel
+from tkinter import NW, Canvas, PhotoImage, Toplevel, Label
 
 from models.dices import rollDices
 
@@ -72,13 +72,13 @@ def rollDicesController(root, dices):
     global maintain4
     global maintain5
     if countRoll == 0:
-        rollDices(dices,0)
+        rollDices(dices, 0)
     elif countRoll < 3:
-        rollDices(dices,maintainNumber)
+        rollDices( dices, maintainNumber)
     else:
-        # box = Toplevel(root)
-        # box.title("Alerta")
-        # box.geometry("300x150")
+        forbiddenRoll = Label(root, text = "Você não pode mais rodar os dados. Execute a sua jogada!", width = 50, anchor = "w", bg='red')
+        forbiddenRoll.place(x = 80, y = 460)
+        root.forbiddenRoll = forbiddenRoll
         return False
     imageList = appendImages(dices, root)
     createCanvas(root, imageList)

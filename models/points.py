@@ -30,28 +30,25 @@ def roundCounter():
     global countRounds
     return countRounds
 
-def executePlaySup(index, value):
+def executePlaySup(index, value, player):
     global countRounds
-
-
-    if (playersTable[0][0][index] != ''):
+    if (playersTable[player][0][index] != ''):
         print('Jogada já executada!')
         return
     countRounds += 1
-    playersTable[0][0][index] = value
-    playersTable[0][0][7] += value
-    return playersTable[0][0]
+    playersTable[player][0][index] = value
+    playersTable[player][0][7] += value
+    return playersTable[player][0]
 
-def executePlayInf(index, value):
+def executePlayInf(index, value, player):
     global countRounds
-    
-    if (playersTable[0][1][index] != ''):
+    if (playersTable[player][1][index] != ''):
         print('Jogada já executada!')
         return
     countRounds += 1
-    playersTable[0][1][index] = value
-    playersTable[0][1][8] += value
-    return playersTable[0][1]
+    playersTable[player][1][index] = value
+    playersTable[player][1][8] += value
+    return playersTable[player][1]
 
 def countDices(dices, num):
     return dices.count(num)

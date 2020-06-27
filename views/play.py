@@ -33,7 +33,7 @@ def finishButton(root):
         for player in playersTable:
             writeFile(player[0], file) # plays sup
             writeFile(player[1], file) # plays inf
-        return
+        return root.destroy()
     return
 
 def rootPlay(root):
