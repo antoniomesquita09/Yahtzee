@@ -1,4 +1,4 @@
-from tkinter import NW, Canvas, PhotoImage
+from tkinter import NW, Canvas, PhotoImage, Toplevel
 
 from models.dices import rollDices
 
@@ -10,6 +10,7 @@ __all__=[
 ]
 
 countRoll = 0
+countRounds = 1
 maintain1 = False
 maintain2 = False
 maintain3 = False
@@ -75,6 +76,9 @@ def rollDicesController(root, dices):
     elif countRoll < 3:
         rollDices(dices,maintainNumber)
     else:
+        # box = Toplevel(root)
+        # box.title("Alerta")
+        # box.geometry("300x150")
         return False
     imageList = appendImages(dices, root)
     createCanvas(root, imageList)

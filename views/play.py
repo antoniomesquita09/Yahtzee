@@ -3,12 +3,12 @@ from tkinter import StringVar, Label
 from models.points import playsSup
 
 __all__=[
-    'rootTable',
+    'rootPlay',
 ]
 
-def table(root):
+def play(root):
     return
 
-def rootTable(root):
-    table(root)
+def rootPlay(root):
+    play(root)
     return

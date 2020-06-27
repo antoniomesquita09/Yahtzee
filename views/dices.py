@@ -8,10 +8,6 @@ __all__=[
     'rootDices',
 ]
 
-countRoll = 0
-countRounds = 1
-
-
 valuesSup = [
     'ones',
     'twos',
@@ -72,7 +68,6 @@ def playOptions(root, dices):
         valueLabel.place(x = 550, y = i*50 + 10)
 
     def handleClick(playList, dices):
-        global countRoll
         array = executePlay(playList, dices)
 
         if (array == None):
@@ -92,8 +87,8 @@ def playOptions(root, dices):
             valueLabel = Label(root, textvariable=value)
             valueLabel.place(x = xPostion, y = i*50 + 10)
         
-        countRoll = resetCountRoll()
-        handleCount(root)
+        rollCounter = resetCountRoll()
+        handleCount(root, rollCounter)
         root.canvas.destroy()
         return
     return
@@ -109,12 +104,12 @@ def rollDicesButton(root, dices):
     countRoundLabel.place(x = 10, y = 700)
 
     def handleClick(root, dices):
-        global countRoll, countRounds
-        countRoll = rollDicesController( root, dices)
-        countRounds = roundCounter()
+        # global countRoll, countRounds
+        rollCounter = rollDicesController(root, dices)
+        roundsCounter = roundCounter()
         
-        handleCount(root)
-        handleRound(root)
+        handleCount(root, rollCounter)
+        handleRound(root, roundsCounter)
         return
 
     b1.pack(padx=120, pady=30)
@@ -122,19 +117,17 @@ def rollDicesButton(root, dices):
     b1.place(x = 150 , y = 500)
     return
 
-def handleCount(root):
-    global countRoll
+def handleCount(root, rollCounter):
     countRollVariable = StringVar()
-    countRollVariable.set(countRoll)
+    countRollVariable.set(rollCounter)
     countRollLabel = Label(root, textvariable=countRollVariable)
     countRollLabel.place(x = 150, y = 600)
     root.countRollLabel = countRollLabel
     return
 
-def handleRound(root):
-    global countRounds
+def handleRound(root, roundsCounter):
     countRoundsVariable = StringVar()
-    countRoundsVariable.set(countRounds)
+    countRoundsVariable.set(roundsCounter)
     countRoundsLabel = Label(root, textvariable=countRoundsVariable)
     countRoundsLabel.place(x = 150, y = 700)
     root.countRoundsLabel = countRoundsLabel
