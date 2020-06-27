@@ -31,6 +31,9 @@ valuesInf = [
     'total',
 ]
 
+numPlayer = 6
+player = 0
+
 
 def playOptions(root, dices):
     playLabel = Label(root, text = "Executar jogada:", width = 50, anchor = "w")
@@ -68,7 +71,8 @@ def playOptions(root, dices):
         valueLabel.place(x = 550, y = i*50 + 10)
 
     def handleClick(playList, dices):
-        array = executePlay(playList, dices, 0)
+        global player
+        array = executePlay(playList, dices, player)
 
         if (array == None):
             forbiddenPlay = Label(root, text = "Execute uma jogada válida!", width = 25, anchor = "w", bg='red')
@@ -87,7 +91,7 @@ def playOptions(root, dices):
             value = StringVar()
             value.set(array[i])
             valueLabel = listLabel[i] + 'Lable'
-            valueLabel = Label(root, textvariable=value)
+            valueLabel = Label(root, textvariable=value, width="10")
             valueLabel.place(x = xPostion, y = i*50 + 10)
 
         try:
@@ -95,15 +99,27 @@ def playOptions(root, dices):
                 root.forbiddenRoll.destroy()
         except:
             print('Lançamento de dado permitido')
+
         try:
             if (root.forbiddenPlay):
                 root.forbiddenPlay.destroy()
         except:
             print('Jogada permitida')
+
+        nextPlayer()
+        handlePlayer(root, player)
         rollCounter = resetCountRoll()
         handleCount(root, rollCounter)
         root.canvas.destroy()
         return
+    return
+
+def nextPlayer():
+    global player, numPlayer
+    if (player == numPlayer -1):
+        player = 0
+        return
+    player += 1
     return
 
 def rollDicesButton(root, dices):
@@ -115,6 +131,9 @@ def rollDicesButton(root, dices):
     
     countRoundLabel = Label(root, text = "Round:", width = 50, anchor = "w")
     countRoundLabel.place(x = 10, y = 650)
+    
+    playerLabel = Label(root, text = "Jogador:", width = 7, anchor = "w")
+    playerLabel.place(x = 500, y = 750)
 
     def handleClick(root, dices):
         # global countRoll, countRounds
@@ -128,6 +147,14 @@ def rollDicesButton(root, dices):
     b1.pack(padx=120, pady=30)
     b1.pack(side = BOTTOM)
     b1.place(x = 150 , y = 500)
+    return
+
+def handlePlayer(root, player):
+    playerVariable = StringVar()
+    playerVariable.set(player + 1) # sum to player index
+    playerLabel = Label(root, textvariable=playerVariable)
+    playerLabel.place(x = 600, y = 750)
+    root.playerLabel = playerLabel
     return
 
 def handleCount(root, rollCounter):
@@ -148,6 +175,8 @@ def handleRound(root, roundsCounter):
 
 
 def rootDices(root, dices):
+    global player
+    handlePlayer(root, player)
     playOptions(root, dices)
     rollDicesButton(root, dices)
     return
