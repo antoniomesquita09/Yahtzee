@@ -1,5 +1,6 @@
 from tkinter import Button
 
+from controllers.play import getPlayersName
 from models.points import pointsCounter
 
 __all__=[
@@ -28,7 +29,13 @@ def finishButton(root):
 
     def handleClick():
         playersTable = pointsCounter()
+        playersName = getPlayersName()
         file = open('file.txt','w')
+
+        for person in playersName:
+            file.write(person + ' ')
+        
+        file.write('\n')
 
         for player in playersTable:
             writeFile(player[0], file) # plays sup
