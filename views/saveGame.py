@@ -1,7 +1,8 @@
 from tkinter import Button, filedialog
 
 from controllers.play import getPlayersName
-from models.points import pointsCounter
+from models.points import pointsCounter, roundCounter
+from views.dices import currentPlayer
 
 __all__=[
     'rootPlay',
@@ -35,6 +36,12 @@ def finishButton(root):
 
         playersTable = pointsCounter()
         playersName = getPlayersName()
+
+        current = currentPlayer()
+        currentRound = roundCounter()
+
+        file.write(str(current) + ' ' + str(currentRound))
+        file.write('\n')
 
         for person in playersName:
             file.write(person + ' ')

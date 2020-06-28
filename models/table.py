@@ -1,5 +1,12 @@
 
 
+__all__=[
+    'resumePlayersTable',
+    'getPlayersTable'
+]
+
+winner = 0
+
 playersTable = [
     # first player
     [
@@ -148,6 +155,25 @@ playersTable = [
 ]
 
 
-def resumeGame(gameFile):
-    # array.join()
-    print()
+def resumePlayersTable(resumedGame):
+    global playersTable
+    playersTable = resumedGame
+    return playersTable
+
+def getPlayersTable():
+    global playersTable
+    return playersTable
+
+
+def checkWinner():
+    global winner
+    tot = 0
+    for i in range(0, len(playersTable)):
+        totalSup = playersTable[i][0][7]
+        totalInf = playersTable[i][1][7]
+        total = totalSup + totalInf
+        if(total > tot):
+            tot = total
+            winner = i
+    
+    

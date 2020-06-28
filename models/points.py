@@ -1,4 +1,4 @@
-from .table import playersTable
+from models.table import getPlayersTable
 
 __all__=[
             'ones',
@@ -17,6 +17,7 @@ __all__=[
             'executePlaySup',
             'executePlayInf',
             'roundCounter',
+            'resumeRound',
         ]
 
 countRounds = 1
@@ -24,7 +25,13 @@ countRounds = 1
 # playersTable[player][sup/inf][indexPlay]
 
 def pointsCounter():
+    playersTable = getPlayersTable()
     return playersTable
+
+def resumeRound(currentRound):
+    global countRounds
+    countRounds = currentRound
+    return countRounds
 
 def roundCounter():
     global countRounds
@@ -37,6 +44,7 @@ def incrementRound():
 
 def executePlaySup(index, value, player):
     global countRounds
+    playersTable = getPlayersTable()
     if (playersTable[player][0][index] != ''):
         print('Jogada já executada!')
         return
@@ -46,6 +54,7 @@ def executePlaySup(index, value, player):
 
 def executePlayInf(index, value, player):
     global countRounds
+    playersTable = getPlayersTable()
     if (playersTable[player][1][index] != ''):
         print('Jogada já executada!')
         return

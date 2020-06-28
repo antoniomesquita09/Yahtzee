@@ -3,11 +3,13 @@ from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW,
 from controllers.play import executePlay, countPlayers, getPlayersName
 from controllers.dices import rollDicesController, canvasClick, resetCountRoll
 from models.points import roundCounter, incrementRound
-from models.table import playersTable
+from models.table import getPlayersTable
 from models.dices import restartDices
 
 __all__=[
     'rootDices',
+    'currentPlayer',
+    'resumePlayer'
 ]
 
 valuesSup = [
@@ -185,6 +187,7 @@ def rollDicesButton(root, dices):
 
 def initialPlays(root):
     global valuesInf, valuesSup
+    playersTable = getPlayersTable()
     arraySup = playersTable[player][0]
     arrayInf = playersTable[player][1]
     for i in range(0, len(arrayInf)):
@@ -229,6 +232,14 @@ def handleRound(root, roundsCounter):
     root.countRoundsLabel = countRoundsLabel
     return
 
+def currentPlayer():
+    global player
+    return player
+
+def resumePlayer(resumedPlayer):
+    global player
+    player = resumedPlayer
+    return player
 
 def rootDices(root, dices):
     global player, numPlayer
@@ -237,3 +248,4 @@ def rootDices(root, dices):
     playOptions(root, dices)
     rollDicesButton(root, dices)
     return
+

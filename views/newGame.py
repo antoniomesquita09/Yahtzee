@@ -3,8 +3,9 @@ from tkinter import Button, Label, Entry, filedialog
 
 from controllers.play import assignPlayers
 from views.dices import rootDices
-from views.play import rootPlay
-from models.table import resumeGame
+from views.saveGame import rootPlay
+from controllers.table import resumeGame
+from models.table import getPlayersTable
 
 __all__=[
     'rootNewGame'
@@ -41,12 +42,13 @@ def rootNewGame(root, dices):
 
     def handleContinue():
         file = filedialog.askopenfilename(initialdir = "/",title = "Selecione uma partida", filetypes = (("txt files","*.txt"),("all files","*.*")))
-        resumeGame(file)
-        # shuffle(playersList)
-        # assignPlayers(playersList)
+        players = resumeGame(file)
+        getPlayersTable()
+        assignPlayers(players)
         destroyHome(root)
         rootDices(root, dices)
         rootPlay(root)
+        return
 
 
 
@@ -89,6 +91,7 @@ def rootNewGame(root, dices):
     return
 
 def destroyHome(root):
+    root.continueButton.destroy()
     root.title.destroy()
     root.labelOne.destroy()
     root.labelTwo.destroy()
