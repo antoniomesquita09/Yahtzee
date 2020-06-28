@@ -3,12 +3,29 @@ import random
 
 __all__=[
     'rollDices',
-    'initDices'
+    'initDices',
+    'restartDices'
 ]
 
+dices = []
+
 def initDices():
-    init = [0, 0, 0, 0, 0]
-    return init
+    global dices
+    dices.append(0)
+    dices.append(0)
+    dices.append(0)
+    dices.append(0)
+    dices.append(0)
+    return dices
+
+def restartDices():
+    global dices
+    dices[0] = 0
+    dices[1] = 0
+    dices[2] = 0
+    dices[3] = 0
+    dices[4] = 0
+    return dices
 
 def rollDices(dices, dadosFixos):
     if dadosFixos >= 10000:

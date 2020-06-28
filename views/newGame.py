@@ -3,6 +3,7 @@ from tkinter import Button, Label, Entry
 from controllers.play import assignPlayers
 from views.dices import rootDices
 from views.play import rootPlay
+from random import shuffle
 
 __all__=[
     'rootNewGame'
@@ -54,12 +55,12 @@ def rootNewGame(root, dices):
             playersList.append(root.inputSix.get())
         
         if(countPlayers < 2):
-            forbiddenInitialization = Label(root, text = "Mínimo de 2 jogadores para iniciar o jogo!", width = 50, anchor = "w", bg='red')
+            forbiddenInitialization = Label(root, text = "Mínimo de 2 jogadores para iniciar o jogo!", width = 50, anchor = "w", bg='red', fg="white")
             forbiddenInitialization.place(x = 150, y = 500)
             root.forbiddenInitialization = forbiddenInitialization
             return
 
-        playersList.sort()
+        shuffle(playersList)
         assignPlayers(playersList)
         destroyHome(root)
         rootDices(root, dices)

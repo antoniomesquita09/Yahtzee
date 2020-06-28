@@ -4,6 +4,7 @@ from controllers.play import executePlay, countPlayers, getPlayersName
 from controllers.dices import rollDicesController, canvasClick, resetCountRoll
 from models.points import roundCounter, incrementRound
 from models.table import playersTable
+from models.dices import restartDices
 
 __all__=[
     'rootDices',
@@ -73,10 +74,27 @@ def playOptions(root, dices):
 
     def handleClick(playList, dices):
         global player
+
+        if(dices == [0,0,0,0,0]):
+            try:
+                if(root.mustRoll):
+                    return
+            except:
+                print('passed')    
+            mustRoll = Label(root, text = "Rode o dado antes de executar uma jogada!", width = 40, anchor = "w", bg='red', fg="white")
+            mustRoll.place(x = 80, y = 550)
+            root.mustRoll = mustRoll
+            return
+
         array = executePlay(playList, dices, player)
 
         if (array == None):
-            forbiddenPlay = Label(root, text = "Execute uma jogada válida!", width = 25, anchor = "w", bg='red')
+            try:
+                if(root.forbiddenPlay):
+                    return
+            except:
+                print('passed')    
+            forbiddenPlay = Label(root, text = "Execute uma jogada válida!", width = 25, anchor = "w", bg='red', fg="white")
             forbiddenPlay.place(x = 80, y = 360)
             root.forbiddenPlay = forbiddenPlay
             return
@@ -102,11 +120,18 @@ def playOptions(root, dices):
             print('Lançamento de dado permitido')
 
         try:
+            if (root.mustRoll):
+                root.mustRoll.destroy()
+        except:
+            print('Lançamento de dado permitido')
+
+        try:
             if (root.forbiddenPlay):
                 root.forbiddenPlay.destroy()
         except:
             print('Jogada permitida')
 
+        restartDices()
         nextPlayer()
         handlePlayer(root, player)
         initialPlays(root)
@@ -141,6 +166,13 @@ def rollDicesButton(root, dices):
     def handleClick(root, dices):
         rollCounter = rollDicesController(root, dices)
         roundsCounter = roundCounter()
+
+        
+        try:
+            if (root.mustRoll):
+                root.mustRoll.destroy()
+        except:
+            print('Lançamento de dado permitido')
         
         handleCount(root, rollCounter)
         handleRound(root, roundsCounter)

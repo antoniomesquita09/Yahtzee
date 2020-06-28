@@ -76,7 +76,12 @@ def rollDicesController(root, dices):
     elif countRoll < 3:
         rollDices( dices, maintainNumber)
     else:
-        forbiddenRoll = Label(root, text = "Você não pode mais rodar os dados. Execute a sua jogada!", width = 50, anchor = "w", bg='red')
+        try:
+            if(root.forbiddenRoll):
+                return False
+        except:
+            print('pass')  
+        forbiddenRoll = Label(root, text = "Você não pode mais rodar os dados. Execute a sua jogada!", width = 50, anchor = "w", bg='red', fg="white")
         forbiddenRoll.place(x = 80, y = 460)
         root.forbiddenRoll = forbiddenRoll
         return False

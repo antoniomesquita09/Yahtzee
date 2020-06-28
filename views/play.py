@@ -1,4 +1,4 @@
-from tkinter import Button
+from tkinter import Button, filedialog
 
 from controllers.play import getPlayersName
 from models.points import pointsCounter
@@ -28,9 +28,13 @@ def finishButton(root):
     finishButton.config(command=lambda: handleClick())
 
     def handleClick():
+        file = filedialog.asksaveasfile(mode='w', filetypes = (("txt files","*.txt"),("all files","*.*")), defaultextension=".txt", title="Salvar andamento")
+
+        if file is None:
+            return
+
         playersTable = pointsCounter()
         playersName = getPlayersName()
-        file = open('file.txt','w')
 
         for person in playersName:
             file.write(person + ' ')
@@ -40,6 +44,7 @@ def finishButton(root):
         for player in playersTable:
             writeFile(player[0], file) # plays sup
             writeFile(player[1], file) # plays inf
+
         return root.destroy()
     return
 

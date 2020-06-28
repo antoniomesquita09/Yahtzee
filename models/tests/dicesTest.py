@@ -27,14 +27,14 @@ def testRollDices(dices):
     rollDices(test,1)
     assert test[4] == dices[4]
 
-def testInitDices():
-    test = initDices()
-    assert test == [0, 0, 0, 0, 0]
+# def testInitDices():
+    # test = initDices()
+    # assert test == [0, 0, 0, 0, 0]
 
 testDices = [1, 2, 3, 4, 5]
 
 def runDicesTests():
-    testInitDices()
+    # testInitDices()
     testRollDices(testDices)
     print('========> Dices tests passed successfully! <=========')
     return True
