@@ -17,12 +17,16 @@ players = [
 ]
 
 def rootNewGame(root, dices):
+    title = Label(root, text = "YAHTZEE", width = 50, anchor = "w")
+    title.config(font=("Courier", 44))
+    title.place(x = 200, y = 150)
     playersLabel(root)
     playersInput(root)
-    finishButton = Button(root, text = "Iniciar partida", activeforeground = "yellow", activebackground = "pink", pady = 50)
-    finishButton.place(x = 400, y = 400)
+    finishButton = Button(root, text = "Iniciar partida", activeforeground = "yellow", activebackground = "pink", pady = 10, bg="green", fg="white" )
+    finishButton.place(x = 300, y = 600)
     finishButton.config(command=lambda: handleClick())
     root.finishButton = finishButton
+    root.title = title
 
     def handleClick():
         test = []
@@ -49,6 +53,7 @@ def rootNewGame(root, dices):
     return
 
 def destroyHome(root):
+    root.title.destroy()
     root.labelOne.destroy()
     root.labelTwo.destroy()
     root.labelThree.destroy()
@@ -67,17 +72,17 @@ def destroyHome(root):
 def playersLabel(root):
     global players
     labelOne = Label(root, text = players[0], width = 12, anchor = "w")
-    labelOne.place(x = 10,y = 90)
+    labelOne.place(x = 150,y = 290)
     labelTwo = Label(root, text = players[1], width = 12, anchor = "w")
-    labelTwo.place(x = 10,y = 110)
+    labelTwo.place(x = 150,y = 320)
     labelThree = Label(root, text = players[2], width = 12, anchor = "w")
-    labelThree.place(x = 10,y = 130)
+    labelThree.place(x = 150,y = 350)
     labelFour = Label(root, text = players[3], width = 12, anchor = "w")
-    labelFour.place(x = 10,y = 150)
+    labelFour.place(x = 150,y = 380)
     labelFive = Label(root, text = players[4], width = 12, anchor = "w")
-    labelFive.place(x = 10,y = 170)
+    labelFive.place(x = 150,y = 410)
     labelSix = Label(root, text = players[5], width = 12, anchor = "w")
-    labelSix.place(x = 10,y = 190)
+    labelSix.place(x = 150,y = 440)
     root.labelOne = labelOne
     root.labelTwo = labelTwo
     root.labelThree = labelThree
@@ -89,17 +94,17 @@ def playersLabel(root):
 def playersInput(root):
     global players
     inputOne = Entry(root, width=50)
-    inputOne.place(x = 75, y = 90)
+    inputOne.place(x = 225, y = 290)
     inputTwo = Entry(root, width=50)
-    inputTwo.place(x = 75, y = 110)
+    inputTwo.place(x = 225, y = 320)
     inputThree = Entry(root, width=50)
-    inputThree.place(x = 75, y = 130)
+    inputThree.place(x = 225, y = 350)
     inputFour = Entry(root, width=50)
-    inputFour.place(x = 75, y = 150)
+    inputFour.place(x = 225, y = 380)
     inputFive = Entry(root, width=50)
-    inputFive.place(x = 75, y = 170)
+    inputFive.place(x = 225, y = 410)
     inputSix = Entry(root, width=50)
-    inputSix.place(x = 75, y = 190)
+    inputSix.place(x = 225, y = 440)
     root.inputOne = inputOne
     root.inputTwo = inputTwo
     root.inputThree = inputThree
