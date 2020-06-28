@@ -2,7 +2,7 @@ from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW,
 
 from controllers.play import executePlay
 from controllers.dices import rollDicesController, canvasClick, resetCountRoll
-from models.points import roundCounter
+from models.points import roundCounter, incrementRound
 from models.table import playersTable
 
 __all__=[
@@ -119,6 +119,7 @@ def playOptions(root, dices):
 def nextPlayer():
     global player, numPlayer
     if (player == numPlayer -1):
+        incrementRound()
         player = 0
         return
     player += 1
