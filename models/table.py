@@ -2,7 +2,8 @@
 
 __all__=[
     'resumePlayersTable',
-    'getPlayersTable'
+    'getPlayersTable',
+    'getWinner'
 ]
 
 winner = 0
@@ -170,10 +171,12 @@ def checkWinner():
     tot = 0
     for i in range(0, len(playersTable)):
         totalSup = playersTable[i][0][7]
-        totalInf = playersTable[i][1][7]
-        total = totalSup + totalInf
+        totalInf = playersTable[i][1][8]
+        total = int(totalSup) + int(totalInf)
         if(total > tot):
             tot = total
             winner = i
     
-    
+def getWinner():
+    global winner
+    return winner

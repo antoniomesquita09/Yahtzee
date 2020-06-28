@@ -3,7 +3,7 @@ from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW,
 from controllers.play import executePlay, countPlayers, getPlayersName
 from controllers.dices import rollDicesController, canvasClick, resetCountRoll
 from models.points import roundCounter, incrementRound
-from models.table import getPlayersTable
+from models.table import getPlayersTable, checkWinner, getWinner
 from models.dices import restartDices
 
 __all__=[
@@ -133,6 +133,20 @@ def playOptions(root, dices):
         except:
             print('Jogada permitida')
 
+        finishGame = checkFinishGame()
+        if (finishGame):
+            winner = getWinner()
+            playersName = getPlayersName()
+
+            print(playersName[winner])
+
+            winnerLegend = Label(root, text = "Vencedor:", width = 150, anchor = "w", fg='red')
+            winnerLegend.place(x = 100,y = 800)
+            winnerLegend.config(font=("Courier", 22))
+            winnerLabel = Label(root, text = playersName[winner], width = 50, anchor = "w", fg='green')
+            winnerLabel.place(x = 350,y = 800)
+            winnerLabel.config(font=("Courier", 22))
+
         restartDices()
         nextPlayer()
         handlePlayer(root, player)
@@ -240,6 +254,18 @@ def resumePlayer(resumedPlayer):
     global player
     player = resumedPlayer
     return player
+
+def checkFinishGame():
+    global player
+    roundsCounter = roundCounter()
+    if(roundsCounter < 13):
+        return False
+    numPlayers = countPlayers()
+    if(player == numPlayers - 1):
+        checkWinner()
+        return True
+    return False
+
 
 def rootDices(root, dices):
     global player, numPlayer
