@@ -144,5 +144,10 @@ playersTable = [
             '', # bonus
             0, # total
         ]
-    ],
+    ]
 ]
+
+
+def resumeGame(gameFile):
+    # array.join()
+    print()

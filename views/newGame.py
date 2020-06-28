@@ -1,9 +1,10 @@
-from tkinter import Button, Label, Entry
+from random import shuffle
+from tkinter import Button, Label, Entry, filedialog
 
 from controllers.play import assignPlayers
 from views.dices import rootDices
 from views.play import rootPlay
-from random import shuffle
+from models.table import resumeGame
 
 __all__=[
     'rootNewGame'
@@ -24,11 +25,30 @@ def rootNewGame(root, dices):
     title.place(x = 200, y = 150)
     playersLabel(root)
     playersInput(root)
+    
     finishButton = Button(root, text = "Iniciar partida", activeforeground = "yellow", activebackground = "pink", pady = 10, bg="green", fg="white" )
     finishButton.place(x = 300, y = 600)
     finishButton.config(command=lambda: handleClick())
+
+    continueButton = Button(root, text = "Continuar partida", activeforeground = "yellow", activebackground = "pink", pady = 10, bg="blue", fg="white" )
+    continueButton.place(x = 290, y = 700)
+    continueButton.config(command=lambda: handleContinue())
+
+
+    root.continueButton = continueButton
     root.finishButton = finishButton
     root.title = title
+
+    def handleContinue():
+        file = filedialog.askopenfilename(initialdir = "/",title = "Selecione uma partida", filetypes = (("txt files","*.txt"),("all files","*.*")))
+        resumeGame(file)
+        # shuffle(playersList)
+        # assignPlayers(playersList)
+        destroyHome(root)
+        rootDices(root, dices)
+        rootPlay(root)
+
+
 
     def handleClick():
         playersList = []
