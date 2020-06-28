@@ -4,7 +4,26 @@ from models.points import executePlaySup, executePlayInf
 
 __all__=[
     'executePlay',
+    'assignPlayers',
+    'countPlayers',
+    'getPlayersName'
 ]
+
+
+players = []
+
+def assignPlayers(playersList):
+    global players
+    players = playersList
+    return players
+
+def countPlayers():
+    global players
+    return len(players)
+
+def getPlayersName():
+    global players
+    return players
 
 def executePlay(playList, dices, player):
     try:

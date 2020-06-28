@@ -1,5 +1,6 @@
 from tkinter import Button, Label, Entry
 
+from controllers.play import assignPlayers
 from views.dices import rootDices
 from views.play import rootPlay
 
@@ -29,23 +30,37 @@ def rootNewGame(root, dices):
     root.title = title
 
     def handleClick():
-        test = []
+        playersList = []
+
+        countPlayers = 0
 
         if(root.inputOne.get() != ''):
-            test.append(root.inputOne.get())
+            countPlayers += 1
+            playersList.append(root.inputOne.get())
         if(root.inputTwo.get() != ''):
-            test.append(root.inputTwo.get())
+            countPlayers += 1
+            playersList.append(root.inputTwo.get())
         if(root.inputThree.get() != ''):
-            test.append(root.inputThree.get())
+            countPlayers += 1
+            playersList.append(root.inputThree.get())
         if(root.inputFour.get() != ''):
-            test.append(root.inputFour.get())
+            countPlayers += 1
+            playersList.append(root.inputFour.get())
         if(root.inputFive.get() != ''):
-            test.append(root.inputFive.get())
+            countPlayers += 1
+            playersList.append(root.inputFive.get())
         if(root.inputSix.get() != ''):
-            test.append(root.inputSix.get())
+            countPlayers += 1
+            playersList.append(root.inputSix.get())
+        
+        if(countPlayers < 2):
+            forbiddenInitialization = Label(root, text = "Mínimo de 2 jogadores para iniciar o jogo!", width = 50, anchor = "w", bg='red')
+            forbiddenInitialization.place(x = 150, y = 500)
+            root.forbiddenInitialization = forbiddenInitialization
+            return
 
-        x = sorted(test)
-        print(x)
+        playersList.sort()
+        assignPlayers(playersList)
         destroyHome(root)
         rootDices(root, dices)
         rootPlay(root)
@@ -53,20 +68,24 @@ def rootNewGame(root, dices):
     return
 
 def destroyHome(root):
-    root.title.destroy()
-    root.labelOne.destroy()
-    root.labelTwo.destroy()
-    root.labelThree.destroy()
-    root.labelFour.destroy()
-    root.labelFive.destroy()
-    root.labelSix.destroy()
-    root.inputOne.destroy()
-    root.inputTwo.destroy()
-    root.inputThree.destroy()
-    root.inputFour.destroy()
-    root.inputFive.destroy()
-    root.inputSix.destroy()
-    root.finishButton.destroy()
+    try:
+        root.forbiddenInitialization.destroy()
+        root.title.destroy()
+        root.labelOne.destroy()
+        root.labelTwo.destroy()
+        root.labelThree.destroy()
+        root.labelFour.destroy()
+        root.labelFive.destroy()
+        root.labelSix.destroy()
+        root.inputOne.destroy()
+        root.inputTwo.destroy()
+        root.inputThree.destroy()
+        root.inputFour.destroy()
+        root.inputFive.destroy()
+        root.inputSix.destroy()
+        root.finishButton.destroy()
+    except:
+        print('Start game')
     return
 
 def playersLabel(root):

@@ -1,6 +1,6 @@
 from tkinter import IntVar, Checkbutton, Tk, Label, Listbox, SINGLE, BOTTOM, NW, Toplevel, Button, Canvas, PhotoImage, StringVar
 
-from controllers.play import executePlay
+from controllers.play import executePlay, countPlayers, getPlayersName
 from controllers.dices import rollDicesController, canvasClick, resetCountRoll
 from models.points import roundCounter, incrementRound
 from models.table import playersTable
@@ -32,7 +32,7 @@ valuesInf = [
     'total',
 ]
 
-numPlayer = 6
+numPlayer = 0
 player = 0
 
 
@@ -139,7 +139,6 @@ def rollDicesButton(root, dices):
     playerLabel.place(x = 500, y = 750)
 
     def handleClick(root, dices):
-        # global countRoll, countRounds
         rollCounter = rollDicesController(root, dices)
         roundsCounter = roundCounter()
         
@@ -175,8 +174,9 @@ def initialPlays(root):
 
 def handlePlayer(root, player):
     playerVariable = StringVar()
-    playerVariable.set(player + 1) # sum to player index
-    playerLabel = Label(root, textvariable=playerVariable)
+    playersName = getPlayersName()
+    playerVariable.set(playersName[player]) # sum to player index
+    playerLabel = Label(root, textvariable=playerVariable, width="20")
     playerLabel.place(x = 600, y = 750)
     root.playerLabel = playerLabel
     return
@@ -199,7 +199,8 @@ def handleRound(root, roundsCounter):
 
 
 def rootDices(root, dices):
-    global player
+    global player, numPlayer
+    numPlayer = countPlayers()
     handlePlayer(root, player)
     playOptions(root, dices)
     rollDicesButton(root, dices)
