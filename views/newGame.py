@@ -68,22 +68,22 @@ def rootNewGame(root, dices):
     return
 
 def destroyHome(root):
+    root.title.destroy()
+    root.labelOne.destroy()
+    root.labelTwo.destroy()
+    root.labelThree.destroy()
+    root.labelFour.destroy()
+    root.labelFive.destroy()
+    root.labelSix.destroy()
+    root.inputOne.destroy()
+    root.inputTwo.destroy()
+    root.inputThree.destroy()
+    root.inputFour.destroy()
+    root.inputFive.destroy()
+    root.inputSix.destroy()
+    root.finishButton.destroy()
     try:
         root.forbiddenInitialization.destroy()
-        root.title.destroy()
-        root.labelOne.destroy()
-        root.labelTwo.destroy()
-        root.labelThree.destroy()
-        root.labelFour.destroy()
-        root.labelFive.destroy()
-        root.labelSix.destroy()
-        root.inputOne.destroy()
-        root.inputTwo.destroy()
-        root.inputThree.destroy()
-        root.inputFour.destroy()
-        root.inputFive.destroy()
-        root.inputSix.destroy()
-        root.finishButton.destroy()
     except:
         print('Start game')
     return
